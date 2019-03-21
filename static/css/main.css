@@ -1,0 +1,43 @@
+html, body {
+    height:100%;
+}
+
+#map {
+    height: 100%;
+    min-height: 500px;
+}
+
+#destinationBox {
+    padding:10px;
+    margin-bottom: 25px;
+    color: yellow;
+    text-align: center;
+    text-shadow: 2px 2px #f00000;
+    background: #aaafff;
+    border-radius: 5px;
+}
+
+#placeSearch {
+    width:70%;
+}
+
+#mainBody{
+    margin-top:0;
+    padding:15px;
+    background-color: #006994;
+}
+
+#mapFunctions{
+    margin-top:25px;
+    margin-left:auto;
+}
+
+.btn{
+    width:90%;
+    color: yellow;
+    background-color: #aaafff;
+    text-shadow: 1px 1px #f00000;
+    font-weight: bold;
+    padding:0;
+    margin:0;
+}
