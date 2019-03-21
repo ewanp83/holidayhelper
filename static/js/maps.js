@@ -3,6 +3,7 @@ var infowindow;
 var service;
 var search;
 var markers = [];
+var placeType;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -28,22 +29,51 @@ function initMap() {
 
     service = new google.maps.places.PlacesService(map);
     
-    function searchPlaces(){
-            search = {
-            bounds: map.getBounds(),
-            types: ['bar']
-        };
-    service.nearbySearch(search, listResults);
-    }
+    
     
     infowindow = new google.maps.InfoWindow();
     
     google.maps.event.addListener(map, 'click', function(){
-        searchPlaces();
+        selection();
     });
 
 }
 
+function selection() {
+    if ($('#hotels').hasClass('selected')){
+        placeType = ['lodging'];
+    }
+    else if ($('#bars').hasClass('selected')){
+        placeType = ['bar'];
+    }
+     else if ($('#restaurants').hasClass('selected')){
+        placeType = ['restaurant'];
+    }
+     else if ($('#atm').hasClass('selected')){
+        placeType = ['atm'];
+    }
+     else if ($('#museum').hasClass('selected')){
+        placeType = ['museum'];
+    }
+     else if ($('#movie_theater').hasClass('selected')){
+        placeType = ['movie_theater'];
+    }
+     else if ($('#zoo').hasClass('selected')){
+        placeType = ['zoo'];
+    }
+     else if ($('#art_gallery').hasClass('selected')){
+        placeType = ['art_gallery'];
+    }
+    searchPlaces();
+}
+
+function searchPlaces(){
+            search = {
+            bounds: map.getBounds(),
+            types: placeType
+        };
+    service.nearbySearch(search, listResults);
+    }
 
 function listResults(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -75,4 +105,3 @@ function clearMarker(marker) {
     }
     markers = [];
 }
-
