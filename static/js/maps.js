@@ -2,7 +2,7 @@ var map;
 var infowindow;
 var service;
 var search;
-
+var markers = [];
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -27,11 +27,11 @@ function initMap() {
     });
 
     service = new google.maps.places.PlacesService(map);
-
+    
     function searchPlaces(){
             search = {
             bounds: map.getBounds(),
-            types: ['restaurant']
+            types: ['bar']
         };
     service.nearbySearch(search, listResults);
     }
@@ -47,8 +47,9 @@ function initMap() {
 
 function listResults(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
+        clearMarker();
         for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
+            markers.push(createMarker(results[i]));
         }
     }
 }
@@ -63,5 +64,15 @@ function createMarker(place) {
                     infowindow.setContent(place.name);
                     infowindow.open(map, this);
                 });
+                return marker;
+}
+
+function clearMarker(marker) {
+    for (var i = 0; i < markers.length; i++) {
+        if (markers[i]) {
+            markers[i].setMap(null);
+        }
+    }
+    markers = [];
 }
 
