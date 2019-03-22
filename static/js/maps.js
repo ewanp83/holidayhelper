@@ -16,7 +16,6 @@ function initMap() {
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
         var places = searchBox.getPlaces();
-
         var bounds = new google.maps.LatLngBounds();
         var i, place;
         for (i = 0; place = places[i]; i++) {
@@ -28,56 +27,54 @@ function initMap() {
     });
 
     service = new google.maps.places.PlacesService(map);
-    
-    
-    
+
     infowindow = new google.maps.InfoWindow();
-    
-    google.maps.event.addListener(map, 'click', function(){
+
+    google.maps.event.addListener(map, 'click', function() {
         selection();
     });
 
 }
 
 function selection() {
-    if ($('#hotels').hasClass('selected')){
+    if ($('#hotels').hasClass('selected')) {
         placeType = ['lodging'];
     }
-    else if ($('#bars').hasClass('selected')){
+    else if ($('#bars').hasClass('selected')) {
         placeType = ['bar'];
     }
-     else if ($('#restaurants').hasClass('selected')){
+    else if ($('#restaurants').hasClass('selected')) {
         placeType = ['restaurant'];
     }
-     else if ($('#atm').hasClass('selected')){
+    else if ($('#atm').hasClass('selected')) {
         placeType = ['atm'];
     }
-     else if ($('#museum').hasClass('selected')){
+    else if ($('#museum').hasClass('selected')) {
         placeType = ['museum'];
     }
-     else if ($('#movie_theater').hasClass('selected')){
+    else if ($('#movie_theater').hasClass('selected')) {
         placeType = ['movie_theater'];
     }
-     else if ($('#zoo').hasClass('selected')){
+    else if ($('#zoo').hasClass('selected')) {
         placeType = ['zoo'];
     }
-     else if ($('#art_gallery').hasClass('selected')){
+    else if ($('#art_gallery').hasClass('selected')) {
         placeType = ['art_gallery'];
     }
     searchPlaces();
 }
 
-function searchPlaces(){
-            search = {
-            bounds: map.getBounds(),
-            types: placeType
-        };
+function searchPlaces() {
+    search = {
+        bounds: map.getBounds(),
+        types: placeType
+    };
     service.nearbySearch(search, listResults);
-    }
+}
 
 function listResults(results, status) {
+    clearMarker();
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-        clearMarker();
         for (var i = 0; i < results.length; i++) {
             markers.push(createMarker(results[i]));
         }
@@ -85,16 +82,15 @@ function listResults(results, status) {
 }
 
 function createMarker(place) {
-                var placeLoc = place.geometry.location;
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: place.geometry.location
-                });
-                google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.setContent(place.name);
-                    infowindow.open(map, this);
-                });
-                return marker;
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+    });
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
+    });
+    return marker;
 }
 
 function clearMarker(marker) {
