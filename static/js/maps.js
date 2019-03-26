@@ -86,10 +86,24 @@ function createMarker(place) {
         map: map,
         position: place.geometry.location
     });
-    google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name);
-        infowindow.open(map, this);
-    });
+
+    google.maps.event.addListener(marker, 'click', showDetails)
+
+    function showDetails() {
+        var detailsSearch = { placeId: place.place_id, };
+
+        service.getDetails(detailsSearch, function(place, status) {
+            if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                return;
+            }
+            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                place.formatted_address + '<br>' +
+                '<div><strong>' + place.formatted_phone_number + '</strong><br>' +
+                place.website + '<br>' +
+                '<div><strong>' + 'Rating: ' + place.rating + '/5' + '</strong></div>');
+            infowindow.open(map, marker);
+        });
+    }
     return marker;
 }
 
