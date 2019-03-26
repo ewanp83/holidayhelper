@@ -30,10 +30,7 @@ function initMap() {
 
     infowindow = new google.maps.InfoWindow();
 
-    google.maps.event.addListener(map, 'click', function() {
-        selection();
-    });
-
+    google.maps.event.addListener(map, 'click', selection);
 }
 
 function selection() {
@@ -99,7 +96,7 @@ function createMarker(place) {
             infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
                 place.formatted_address + '<br>' +
                 '<div><strong>' + place.formatted_phone_number + '</strong><br>' +
-                place.website + '<br>' +
+                '<a href="' + place.website + '" target="blank">' + 'Visit website' + '</a>' + '<br>' +
                 '<div><strong>' + 'Rating: ' + place.rating + '/5' + '</strong></div>');
             infowindow.open(map, marker);
         });
