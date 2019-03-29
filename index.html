@@ -11,30 +11,61 @@
     <title>Holiday Helper</title>
 
 </head>
-
 <body>
+    <header class="container-fluid text-center" id="introBlock">
+        <div class="col-12 title">
+            <h1>Holiday Helper</h1>
+        </div>
+        <div class="col-12 subtitle">
+            <h2>Let us help you explore the world and find your next holiday destination</h2>
+        </div>
+        <div>
+            <!--<a href="#destinationBox" class="btn btn-warning btn-lg" role="button" id="start">Let's get started!</a>-->
+            <button class="btn btn-warning btn-lg" id="start">Let's get started!</button>
+        </div>
+    </header>
     <div class="container-fluid" id="mainBody">
-        <div class="col-6 offset-3" id="destinationBox">
+        <div class="row">
+        <div class="col-12 text-center" id="destinationBox">
             <h2>Enter your destination</h2><input id="placeSearch" class="search" type="search" placeholder="Search Here">
         </div>
-        <div class="col-10 offset-1" id="map"></div>
-        <div class="row" id="mapFunctions">
-            <div class="col-6 col-md-3"><button type="button" class="btn btn-info" id="hotels">Hotels</button></div>
-            <div class="col-6 col-md-3"><button type="button" class="btn btn-info" id="restaurants">Restaurants</button></div>
-            <div class="col-6 col-md-3"><button type="button" class="btn btn-info" id="bars">Bars</button></div>
-            <div class="col-6 col-md-3"><button type="button" class="btn btn-info" id="atm">ATMs</button></div>
         </div>
-        <div class="row" id="mapFunctions">
-            <div class="col-6 col-md-3"><button type="button" class="btn btn-info" id="art_gallery">Art Gallery</button></div>
-            <div class="col-6 col-md-3"><button type="button" class="btn btn-info" id="museum">Museums</button></div>
-            <div class="col-6 col-md-3"><button type="button" class="btn btn-info" id="movie_theater">Cinemas</button></div>
-            <div class="col-6 col-md-3"><button type="button" class="btn btn-info" id="zoo">Zoos</button></div>
+        <div class="row">
+        <div class="col-12" id="map"></div>
         </div>
+        <div class="row">
+            <div class="col-10 col-md-5 offset-1 btn-group dropup">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="find">I want to find.... </button>
+                <div class="dropdown-menu">
+                    <button type="button" class="btn btn-info placeOptions" id="hotels">Hotels</button>
+                    <button type="button" class="btn btn-info placeOptions" id="restaurants">Restaurants</button>
+                    <button type="button" class="btn btn-info placeOptions" id="bars">Bars</button>
+                    <button type="button" class="btn btn-info placeOptions" id="atm">ATMs</button>
+                    <button type="button" class="btn btn-info placeOptions" id="art_gallery">Art Galleries</button>
+                    <button type="button" class="btn btn-info placeOptions" id="museum">Museums</button>
+                    <button type="button" class="btn btn-info placeOptions" id="movie_theater">Cinemas</button>
+                    <button type="button" class="btn btn-info placeOptions" id="zoo">Zoos</button>
+                </div>
+            </div>
+            <div class="col-10 offset-1 col-md-5 offset-md-0">
+                <button type="button" class="btn btn-info" id="showMe">Show me where they are!</button>
+            </div>
+        </div>
+  <!--      <div class="row" id="mapFunctions">
+            <div class="col"><button type="button" class="btn btn-info placeOptions" id="hotels">Hotels</button></div>
+            <div class="col"><button type="button" class="btn btn-info placeOptions" id="restaurants">Restaurants</button></div>
+            <div class="col"><button type="button" class="btn btn-info placeOptions" id="bars">Bars</button></div>
+            <div class="col"><button type="button" class="btn btn-info placeOptions" id="atm">ATMs</button></div>
+            <div class="col"><button type="button" class="btn btn-info placeOptions" id="art_gallery">Art Gallery</button></div>
+            <div class="col"><button type="button" class="btn btn-info placeOptions" id="museum">Museums</button></div>
+            <div class="col"><button type="button" class="btn btn-info placeOptions" id="movie_theater">Cinemas</button></div>
+            <div class="col"><button type="button" class="btn btn-info placeOptions" id="zoo">Zoos</button></div>
+        </div> -->
     </div>
 
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="static/js/controls.js"></script>
     <script type="text/javascript" src="static/js/maps.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDzC_qy_vt0xkWJNtqQjY41VTFjxiXu7k&libraries=places&callback=initMap" async defer></script>

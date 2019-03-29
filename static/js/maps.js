@@ -30,7 +30,7 @@ function initMap() {
 
     infowindow = new google.maps.InfoWindow();
 
-    google.maps.event.addListener(map, 'click', selection);
+    google.maps.event.addDomListener(document.getElementById("showMe"), 'click', selection);
 }
 
 function selection() {
@@ -93,11 +93,35 @@ function createMarker(place) {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
                 return;
             }
-            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-                place.formatted_address + '<br>' +
-                '<div><strong>' + place.formatted_phone_number + '</strong><br>' +
-                '<a href="' + place.website + '" target="blank">' + 'Visit website' + '</a>' + '<br>' +
-                '<div><strong>' + 'Rating: ' + place.rating + '/5' + '</strong></div>');
+            var infoName = '<strong>' + place.name + '</strong>';
+            var infoAddress = place.formatted_address;
+            var infoPhoneNumber = '<strong>' + place.formatted_phone_number + '</strong>';
+            var infoWeblink = '<a href="' + place.website + '" target="blank">' + 'Visit website' + '</a>';
+            var infoPlaceRating = '<strong>' + 'Rating: ' + place.rating + '/5' + '</strong>';
+            //var infoPhoto = '<img src="' + place.photos[0].getUrl() + '" alt="place photo">';
+
+            function checkValidDetails() {
+                if (!place.formatted_address) {
+                    infoAddress = 'No address available';
+                }
+                if (!place.formatted_phone_number) {
+                    infoPhoneNumber = 'No phone number available';
+                }
+                if (!place.website) {
+                    infoWeblink = 'No website available';
+                }
+                if (!place.rating) {
+                    infoPlaceRating = 'No rating available';
+                }
+            }
+            checkValidDetails();
+            var infoDetails = '<div>' + infoName + '<br>' +
+                infoAddress + '<br>' +
+                infoPhoneNumber + '<br>' +
+                infoWeblink + '<br>' +
+                infoPlaceRating + '<br>' + '</div>';
+
+            infowindow.setContent(infoDetails);
             infowindow.open(map, marker);
         });
     }

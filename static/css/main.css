@@ -4,19 +4,44 @@ html, body {
     padding:0;
 }
 
+#introBlock {
+    height:100vh;
+    background: linear-gradient(rgba(226, 94, 13, 0.5), rgba(226, 94, 13, 0.5)), url(/static/images/travel.jpeg);
+    background-size: cover;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.title {
+    padding-top: 35px;
+}
+
+h1 {
+    font-size: 4em;
+    
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+#start {
+    margin-top:75px;
+    color: #fff;
+}
+
 #map {
     height: 100%;
     min-height: 500px;
 }
 
 #destinationBox {
+    margin-top: 0;
     padding:10px;
-    margin-bottom: 25px;
-    color: yellow;
-    text-align: center;
+    margin-bottom: 0;
+    color: #fff;
     text-shadow: 2px 2px #f00000;
-    background: #aaafff;
-    border-radius: 5px;
+    background: rgb(226, 94, 13);
 }
 
 #placeSearch {
@@ -25,21 +50,39 @@ html, body {
 
 #mainBody{
     margin-top:0;
-    padding:15px;
-    background-color: #006994;
+    background-color: #fff;
 }
 
-#mapFunctions{
-    margin-top:25px;
-    margin-left:auto;
-}
 
-.btn{
-    width:90%;
-    color: yellow;
-    background-color: #aaafff;
+.btn-info{
+    width: 100%;
+    color: #fff;
+    background-color: rgb(226, 94, 13);
     text-shadow: 1px 1px #f00000;
     font-weight: bold;
     padding:0;
     margin:0;
 }
+
+#find {
+    color: #fff;
+    background-color: rgb(226, 94, 13);
+    text-shadow: 1px 1px #f00000;
+    font-weight: bold;
+    padding:0;
+    margin: 25px;
+    text-align: center;
+}
+
+#showMe {
+    color: #fff;
+    background-color: rgb(226, 94, 13);
+    text-shadow: 1px 1px #f00000;
+    font-weight: bold;
+    padding:0;
+    margin: 25px;
+    text-align: center;
+}
+
+
+
