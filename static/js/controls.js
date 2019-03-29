@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    $('#start').click(function() {
+        $('html, body').animate({
+            scrollTop: $("#destinationBox").offset().top
+        }, 1000);
+    });
+
     $('#hotels').click(function() {
         $('.placeOptions').removeClass('selected');
         $(this).addClass('selected');
