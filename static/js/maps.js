@@ -31,6 +31,7 @@ function initMap() {
     infowindow = new google.maps.InfoWindow();
 
     google.maps.event.addDomListener(document.getElementById("showMe"), 'click', selection);
+    
 }
 
 function selection() {
@@ -85,7 +86,7 @@ function createMarker(place) {
     });
 
     google.maps.event.addListener(marker, 'click', showDetails)
-
+    
     function showDetails() {
         var detailsSearch = { placeId: place.place_id, };
 
@@ -139,6 +140,7 @@ function createMarker(place) {
             infowindow.setContent(document.getElementById('placeInfo'));
             infowindow.open(map, marker);
         });
+        google.maps.event.addListener(infowindow, 'closeclick', resetPlaceInfo);
     }
     return marker;
 }
@@ -151,3 +153,7 @@ function clearMarker(marker) {
     }
     markers = [];
 }
+
+function resetPlaceInfo() {
+             $('#infoWrapper').html('<div id="placeInfo" class="text-center"><p id="placeHeading"></p><p id="placeAddress"></p><p id="placePhone"></p><p id="placeWebsite"></p><p>Rating: <span id="placeRating"></span>/5</p></div>');
+        }
