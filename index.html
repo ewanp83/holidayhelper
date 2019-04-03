@@ -11,6 +11,7 @@
     <title>Holiday Helper</title>
 
 </head>
+
 <body>
     <header class="container-fluid text-center" id="introBlock">
         <div class="col-12 title">
@@ -25,12 +26,12 @@
     </header>
     <div class="container-fluid" id="mainBody">
         <div class="row">
-        <div class="col-12 text-center" id="destinationBox">
-            <h2>Enter your destination</h2><input id="placeSearch" class="search" type="search" placeholder="Search Here">
-        </div>
+            <div class="col-12 text-center" id="destinationBox">
+                <h2>Enter your destination</h2><input id="placeSearch" class="search" type="search" placeholder="Where would you like to go?">
+            </div>
         </div>
         <div class="row">
-        <div class="col-12" id="map"></div>
+            <div class="col-10 offset-1" id="map"></div>
         </div>
         <div class="row">
             <div class="col-10 col-md-5 offset-1 btn-group dropup">
@@ -49,6 +50,15 @@
             <div class="col-10 offset-1 col-md-5 offset-md-0">
                 <button type="button" class="btn btn-info" id="showMe">Show me where they are!</button>
             </div>
+        </div>
+    </div>
+    <div id="infoWrapper">
+        <div id="placeInfo" class="text-center">
+            <p id="placeHeading"></p>
+            <p id="placeAddress"></p>
+            <p id="placePhone"></p>
+            <p id="placeWebsite"></p>
+            <p>Rating: <span id="placeRating"></span>/5</p>
         </div>
     </div>
 

@@ -93,13 +93,12 @@ function createMarker(place) {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
                 return;
             }
-            var infoName = '<strong>' + place.name + '</strong>';
+           /* var infoName = '<strong>' + place.name + '</strong>';
             var infoAddress = place.formatted_address;
             var infoPhoneNumber = '<strong>' + place.formatted_phone_number + '</strong>';
             var infoWeblink = '<a href="' + place.website + '" target="blank">' + 'Visit website' + '</a>';
             var infoPlaceRating = '<strong>' + 'Rating: ' + place.rating + '/5' + '</strong>';
-            //var infoPhoto = '<img src="' + place.photos[0].getUrl() + '" alt="place photo">';
-
+            
             function checkValidDetails() {
                 if (!place.formatted_address) {
                     infoAddress = 'No address available';
@@ -115,13 +114,29 @@ function createMarker(place) {
                 }
             }
             checkValidDetails();
-            var infoDetails = '<div>' + infoName + '<br>' +
+            function setPlaceInfo() {
+                document.getElementById('placeHeading').textContent = infoName;
+                document.getElementById('placeAddress').textContent = infoAddress;
+                document.getElementById('placePhone').textContent = infoPhoneNumber;
+                document.getElementById('placeWebsite').textContent = infoWeblink;
+                document.getElementById('placeRating').textContent = infoPlaceRating;
+            }*/
+            function setPlaceInfo() {
+                document.getElementById('placeHeading').textContent = place.name;
+                document.getElementById('placeAddress').textContent = place.formatted_address;
+                document.getElementById('placePhone').textContent = place.formatted_phone_number;
+                document.getElementById('placeWebsite').textContent = place.website;
+                document.getElementById('placeRating').textContent = place.rating;
+            }
+            setPlaceInfo(); 
+             
+            /*var infoDetails = '<div>' + infoName + '<br>' +
                 infoAddress + '<br>' +
                 infoPhoneNumber + '<br>' +
                 infoWeblink + '<br>' +
                 infoPlaceRating + '<br>' + '</div>';
-
-            infowindow.setContent(infoDetails);
+            */
+            infowindow.setContent(document.getElementById('placeInfo'));
             infowindow.open(map, marker);
         });
     }

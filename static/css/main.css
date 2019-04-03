@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta');
+
 html, body {
     height:100%;
     margin:0;
     padding:0;
+    font-family: mukta;
 }
 
 #introBlock {
@@ -17,40 +20,48 @@ html, body {
 }
 
 h1 {
-    font-size: 4em;
+    font-size: 5em;
     
 }
 
 h2 {
-    font-size: 2.5em;
+    font-size: 3em;
 }
 
 #start {
     margin-top:75px;
     color: #fff;
+    font-weight:bold;
+    background-color: #009fe1;
 }
 
 #map {
     height: 100%;
-    min-height: 500px;
+    min-height: 60vh;
 }
 
 #destinationBox {
     margin-top: 0;
     padding:10px;
-    margin-bottom: 0;
+    margin-bottom: 50px;
     color: #fff;
     text-shadow: 2px 2px #f00000;
     background: rgb(226, 94, 13);
+    font-family: mukta;
+    font-weight: bold;
 }
 
 #placeSearch {
     width:70%;
+    text-align: center;
+    font-size: 1.3em
 }
 
 #mainBody{
     margin-top:0;
     background-color: #fff;
+    height:100vh;
+    
 }
 
 
@@ -60,29 +71,53 @@ h2 {
     background-color: rgb(226, 94, 13);
     text-shadow: 1px 1px #f00000;
     font-weight: bold;
-    padding:0;
     margin:0;
+}
+
+.dropdown-toggle {
+    padding-top:15px;
+    padding-bottom:15px;
 }
 
 #find {
     color: #fff;
     background-color: rgb(226, 94, 13);
     text-shadow: 1px 1px #f00000;
-    font-weight: bold;
-    padding:0;
-    margin: 25px;
+    padding:10px 0px;
+    margin-top: 25px;
+    margin-bottom:10px;
     text-align: center;
+    font-size:1.3em;
+    font-family: mukta;
+    width:100%;
 }
 
 #showMe {
     color: #fff;
     background-color: rgb(226, 94, 13);
     text-shadow: 1px 1px #f00000;
-    font-weight: bold;
-    padding:0;
-    margin: 25px;
+    padding:10px 0px;
+    margin-top: 25px;
+    margin-bottom:10px;
     text-align: center;
+    font-size:1.3em;
+    font-family: mukta;
+    width:100%;
 }
 
+#infoWrapper {
+    display: none;
+}
+
+#placeInfo {
+    margin:0;
+    padding:0;
+    color: blue;
+}
+
+#placeInfo #placeHeading {
+    color: rgb(226, 94, 13);
+    font-size: 20px;
+}
 
 
