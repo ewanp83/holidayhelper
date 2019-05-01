@@ -62,7 +62,7 @@ $(document).ready(function() {
 
     $('#showMe').click(function() {
         $('#find').text('I want to find.... ');
-                $('#infoWrapper').html('<div id="placeInfo" class="text-center"><p id="placeHeading"></p><p id="placeAddress"></p><p id="placePhone"></p><p id="placeWebsite"></p><p>Rating: <span id="placeRating"></span>/5</p></div>');
+        $('#infoWrapper').html('<div id="placeInfo" class="text-center"><p id="placeHeading"></p><hr/><p id="placeAddress"></p><p id="placePhone"></p><p id="placeWebsite"></p><p>Rating: <span id="placeRating"></span></p></div>');
     });
     
 });

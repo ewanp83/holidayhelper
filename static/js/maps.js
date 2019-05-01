@@ -59,6 +59,7 @@ function selection() {
     else if ($('#art_gallery').hasClass('selected')) {
         placeType = ['art_gallery'];
     }
+    else ($('#overlay').show);
     searchPlaces();
 }
 
@@ -94,11 +95,11 @@ function createMarker(place) {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
                 return;
             }
-           /* var infoName = '<strong>' + place.name + '</strong>';
+            var infoName = place.name;
             var infoAddress = place.formatted_address;
-            var infoPhoneNumber = '<strong>' + place.formatted_phone_number + '</strong>';
-            var infoWeblink = '<a href="' + place.website + '" target="blank">' + 'Visit website' + '</a>';
-            var infoPlaceRating = '<strong>' + 'Rating: ' + place.rating + '/5' + '</strong>';
+            var infoPhoneNumber = place.formatted_phone_number;
+            var infoWeblink = place.website;
+            var infoPlaceRating = place.rating + '/5';
             
             function checkValidDetails() {
                 if (!place.formatted_address) {
@@ -121,22 +122,9 @@ function createMarker(place) {
                 document.getElementById('placePhone').textContent = infoPhoneNumber;
                 document.getElementById('placeWebsite').textContent = infoWeblink;
                 document.getElementById('placeRating').textContent = infoPlaceRating;
-            }*/
-            function setPlaceInfo() {
-                document.getElementById('placeHeading').textContent = place.name;
-                document.getElementById('placeAddress').textContent = place.formatted_address;
-                document.getElementById('placePhone').textContent = place.formatted_phone_number;
-                document.getElementById('placeWebsite').textContent = place.website;
-                document.getElementById('placeRating').textContent = place.rating;
             }
             setPlaceInfo(); 
              
-            /*var infoDetails = '<div>' + infoName + '<br>' +
-                infoAddress + '<br>' +
-                infoPhoneNumber + '<br>' +
-                infoWeblink + '<br>' +
-                infoPlaceRating + '<br>' + '</div>';
-            */
             infowindow.setContent(document.getElementById('placeInfo'));
             infowindow.open(map, marker);
         });
@@ -155,5 +143,5 @@ function clearMarker(marker) {
 }
 
 function resetPlaceInfo() {
-             $('#infoWrapper').html('<div id="placeInfo" class="text-center"><p id="placeHeading"></p><p id="placeAddress"></p><p id="placePhone"></p><p id="placeWebsite"></p><p>Rating: <span id="placeRating"></span>/5</p></div>');
+             $('#infoWrapper').html('<div id="placeInfo" class="text-center"><p id="placeHeading"></p><p id="placeAddress"></p><p id="placePhone"></p><p id="placeWebsite"></p><p>Rating: <span id="placeRating"></span></p></div>');
         }
