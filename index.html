@@ -6,13 +6,14 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/main.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
 
     <title>Holiday Helper</title>
 
 </head>
 
 <body>
+    <!-- Welcome page and heading-->
+    
     <header class="container-fluid text-center" id="introBlock">
         <div class="col-12 title">
             <h1>Holiday Helper</h1>
@@ -25,16 +26,43 @@
         </div>
     </header>
     <div class="container-fluid" id="mainBody">
+        
+        <!-- Destination Search Box-->
+        
         <div class="row">
             <div class="col-12 text-center" id="destinationBox">
                 <h2>Enter your destination</h2><input id="placeSearch" class="search" type="search" placeholder="Where would you like to go?">
             </div>
         </div>
+        
+        <!-- Map and instructive popups-->
+        
         <div class="row">
-            <div class="col-10 offset-1" id="map">
-                <div id="overlay">Please select a place type</div>
+            <div class="col-10 offset-1" id="map"></div>
+            <div class="modal fade" id="pleaseSelect" tabindex="-1" role="dialog" aria-labelledby="pleaseSelectPlaceType" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                           Please select a place type to find
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal fade" id="noResults" tabindex="-1" role="dialog" aria-labelledby="SorryNoResults" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                           Sorry! We couldn't find any in the selected area.
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+        
+        <!-- Place type selector and show me buttons-->
+        
         <div class="row">
             <div class="col-10 col-md-5 offset-1 btn-group dropup">
                 <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="find">I want to find.... </button>
@@ -54,6 +82,9 @@
             </div>
         </div>
     </div>
+    
+    <!-- Infowindow box-->
+    
     <div id="infoWrapper">
         <div id="placeInfo">
             <p id="placeHeading"></p>

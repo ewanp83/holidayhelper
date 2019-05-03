@@ -1,3 +1,5 @@
+//-----------------Global Variables-------------------
+
 var map;
 var infowindow;
 var service;
@@ -5,12 +7,16 @@ var search;
 var markers = [];
 var placeType;
 
+//------------------Initialize map----------------------
+
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 46.619261, lng: -33.134766 },
         zoom: 3,
         mapTypeId: 'roadmap'
     });
+    
+//---------------Uses place search box as input for map and sets map to search location----------------------------------------------
 
     var searchBox = new google.maps.places.SearchBox(document.getElementById('placeSearch'));
 
@@ -29,10 +35,20 @@ function initMap() {
     service = new google.maps.places.PlacesService(map);
 
     infowindow = new google.maps.InfoWindow();
-
-    google.maps.event.addDomListener(document.getElementById("showMe"), 'click', selection);
     
+//------Starts functions on click of show me button and shows modal to select placetype if not already selected-----
+
+    google.maps.event.addDomListener(document.getElementById("showMe"), 'click', function(event){
+        if ($('.placeOptions').hasClass('selected')) {
+            selection();}
+        else ($('#pleaseSelect').modal('show'));
+         setTimeout(function() {
+                $('#pleaseSelect').modal('hide');
+                }, 2000);
+        });
 }
+
+//-------------sets placeType for search------------------
 
 function selection() {
     if ($('#hotels').hasClass('selected')) {
@@ -59,17 +75,22 @@ function selection() {
     else if ($('#art_gallery').hasClass('selected')) {
         placeType = ['art_gallery'];
     }
-    else ($('#overlay').show);
+    
     searchPlaces();
 }
+
+//-------------------search for results-------------------
 
 function searchPlaces() {
     search = {
         bounds: map.getBounds(),
         types: placeType
+        
     };
     service.nearbySearch(search, listResults);
 }
+
+//---------------Place markers on map-------------------------
 
 function listResults(results, status) {
     clearMarker();
@@ -80,11 +101,15 @@ function listResults(results, status) {
     }
 }
 
+//---------------create markers------------------
+
 function createMarker(place) {
     var marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location
     });
+
+//-------Gets info on places that appear in the results and shows on marker click------------------ 
 
     google.maps.event.addListener(marker, 'click', showDetails)
     
@@ -101,6 +126,8 @@ function createMarker(place) {
             var infoWeblink = place.website;
             var infoPlaceRating = place.rating + '/5';
             
+//--------------Checks whether there is info for requested fields-----------------------    
+
             function checkValidDetails() {
                 if (!place.formatted_address) {
                     infoAddress = 'No address available';
@@ -116,11 +143,14 @@ function createMarker(place) {
                 }
             }
             checkValidDetails();
+            
+//--------------Populates the infoWindow div with info---------------------------------   
+
             function setPlaceInfo() {
                 document.getElementById('placeHeading').textContent = infoName;
                 document.getElementById('placeAddress').textContent = infoAddress;
                 document.getElementById('placePhone').textContent = infoPhoneNumber;
-                document.getElementById('placeWebsite').textContent = infoWeblink;
+                document.getElementById('placeWebsite').innerHTML = '<a href="' + infoWeblink + '" target="_blank">' + 'Visit Website ' + '</a>';
                 document.getElementById('placeRating').textContent = infoPlaceRating;
             }
             setPlaceInfo(); 
@@ -128,6 +158,9 @@ function createMarker(place) {
             infowindow.setContent(document.getElementById('placeInfo'));
             infowindow.open(map, marker);
         });
+        
+//-------------------repopulates the infowindow html when infowindow is closed-------------
+
         google.maps.event.addListener(infowindow, 'closeclick', resetPlaceInfo);
     }
     return marker;
@@ -143,5 +176,5 @@ function clearMarker(marker) {
 }
 
 function resetPlaceInfo() {
-             $('#infoWrapper').html('<div id="placeInfo" class="text-center"><p id="placeHeading"></p><p id="placeAddress"></p><p id="placePhone"></p><p id="placeWebsite"></p><p>Rating: <span id="placeRating"></span></p></div>');
+             $('#infoWrapper').html('<div id="placeInfo" class="text-center"><p id="placeHeading"></p><hr/><p id="placeAddress"></p><p id="placePhone"></p><p id="placeWebsite"></p><p>Rating: <span id="placeRating"></span></p></div>');
         }

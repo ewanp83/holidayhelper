@@ -1,10 +1,14 @@
 $(document).ready(function() {
 
+    //Scroll to map page
+
     $('#start').click(function() {
         $('html, body').animate({
             scrollTop: $("#destinationBox").offset().top
         }, 1000);
     });
+
+    //PlaceType selector and button text control
 
     $('#hotels').click(function() {
         $('.placeOptions').removeClass('selected');
@@ -60,8 +64,8 @@ $(document).ready(function() {
         $('#mapFunctions').toggle();
     });
 
+    //Repopulate infowindow
     $('#showMe').click(function() {
-        $('#find').text('I want to find.... ');
         $('#infoWrapper').html('<div id="placeInfo" class="text-center"><p id="placeHeading"></p><hr/><p id="placeAddress"></p><p id="placePhone"></p><p id="placeWebsite"></p><p>Rating: <span id="placeRating"></span></p></div>');
     });
     
