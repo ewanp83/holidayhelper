@@ -21,7 +21,7 @@ a:hover{
 }
 
 p {
-    margin:0;
+    margin:10px;
 }
 
 hr {
@@ -33,7 +33,7 @@ hr {
 
 #introBlock {
     height:100vh;
-    background: linear-gradient(rgba(226, 94, 13, 0.5), rgba(226, 94, 13, 0.5)), url(/static/images/travel.jpeg);
+    background: linear-gradient(rgba(226, 94, 13, 0.5), rgba(226, 94, 13, 0.5)), url("/static/images/travel.jpeg");
     background-size: cover;
     color: #fff;
     margin-bottom: 0;
